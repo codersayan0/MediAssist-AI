@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Symptom Checker — MediAssist AI</title>
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/components.css">
+  <link rel="stylesheet" href="css/animations.css">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
+<body>
+
+  <nav class="navbar">
+    <div class="nav-brand"><span class="brand-icon">+</span> MediAssist AI</div>
+    <div class="nav-links">
+      <a href="index.html">Home</a>
+      <a href="symptom_checker.html" class="active">Symptom Checker</a>
+      <a href="report_upload.html">Upload Report</a>
+    </div>
+  </nav>
+
+  <div class="page-container">
+    <h1 class="page-title">Symptom Checker</h1>
+    <p class="page-sub">Fill in your details and select your symptoms for an AI-powered diagnosis.</p>
+
+    <div class="card">
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:16px">
+        <div class="form-group">
+          <label>Age</label>
+          <input type="number" id="age" class="form-control" placeholder="e.g. 35" min="1" max="120">
+        </div>
+        <div class="form-group">
+          <label>Gender</label>
+          <select id="gender" class="form-control">
+            <option value="male">Male</option>
+            <option value="female">Female</option>
+            <option value="other">Other</option>
+          </select>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label>Select Symptoms (click to select multiple)</label>
+        <div class="symptom-tags" id="symptomTags"></div>
+      </div>
+
+      <div class="form-group">
+        <label>Other Symptoms (type manually)</label>
+        <input type="text" id="customSymptom" class="form-control" placeholder="Type symptom and press Enter">
+      </div>
+
+      <div id="selectedList" style="margin-bottom:16px;font-size:13px;color:#185FA5;min-height:20px;"></div>
+
+      <button class="btn btn-primary" onclick="submitSymptoms()" style="width:100%">
+        Analyze Symptoms
+      </button>
+    </div>
+
+    <div class="loading-overlay" id="loading">
+      <div class="spinner"></div>
+      <p>MediAssist AI is analyzing your symptoms...</p>
+    </div>
+  </div>
+
+  <script src="js/api.js"></script>
+  <script src="js/symptom_checker.js"></script>
+</body>
+</html>

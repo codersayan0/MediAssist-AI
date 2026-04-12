@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>About — MediAssist AI</title>
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/components.css">
+  <link rel="stylesheet" href="css/animations.css">
+  <style>
+    .hero-about {
+      background: linear-gradient(135deg, #E6F1FB 0%, #E1F5EE 100%);
+      border-radius: 18px;
+      padding: 48px 36px;
+      text-align: center;
+      margin-bottom: 32px;
+      border: 0.5px solid #B5D4F4;
+    }
+    .hero-about h1 { font-size: 32px; font-weight: 700; color: #185FA5; margin-bottom: 10px; }
+    .hero-about p  { font-size: 15px; color: #5F5E5A; max-width: 560px; margin: 0 auto; line-height: 1.7; }
+    .tech-stack {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-top: 12px;
+    }
+    .tech-pill {
+      padding: 5px 14px;
+      border-radius: 20px;
+      font-size: 12px;
+      font-weight: 500;
+      border: 0.5px solid;
+    }
+    .pill-blue   { background: #E6F1FB; color: #185FA5; border-color: #85B7EB; }
+    .pill-green  { background: #EAF3DE; color: #3B6D11; border-color: #97C459; }
+    .pill-teal   { background: #E1F5EE; color: #0F6E56; border-color: #5DCAA5; }
+    .pill-amber  { background: #FAEEDA; color: #854F0B; border-color: #FAC775; }
+    .pill-purple { background: #EEEDFE; color: #534AB7; border-color: #AFA9EC; }
+    .section-heading {
+      font-size: 18px;
+      font-weight: 700;
+      color: #1a1a18;
+      margin-bottom: 16px;
+      padding-bottom: 10px;
+      border-bottom: 0.5px solid rgba(0,0,0,0.08);
+    }
+    .flow-step {
+      display: flex;
+      gap: 16px;
+      align-items: flex-start;
+      padding: 16px 0;
+      border-bottom: 0.5px solid rgba(0,0,0,0.06);
+    }
+    .flow-step:last-child { border-bottom: none; }
+    .flow-num {
+      width: 32px;
+      height: 32px;
+      border-radius: 50%;
+      background: #185FA5;
+      color: #fff;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 13px;
+      font-weight: 700;
+      flex-shrink: 0;
+    }
+    .flow-content h4 { font-size: 14px; font-weight: 600; margin-bottom: 3px; color: #1a1a18; }
+    .flow-content p  { font-size: 13px; color: #5F5E5A; line-height: 1.5; }
+    .dataset-row {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 10px 0;
+      border-bottom: 0.5px solid rgba(0,0,0,0.06);
+      font-size: 13px;
+    }
+    .dataset-row:last-child { border-bottom: none; }
+    .dataset-name { font-weight: 500; color: #1a1a18; }
+    .dataset-use  { color: #5F5E5A; }
+    .warning-banner {
+      background: #FAEEDA;
+      border: 0.5px solid #FAC775;
+      border-left: 4px solid #BA7517;
+      border-radius: 0 10px 10px 0;
+      padding: 18px 20px;
+      margin-bottom: 16px;
+    }
+    .warning-banner h4 { font-size: 14px; font-weight: 600; color: #633806; margin-bottom: 6px; }
+    .warning-banner p  { font-size: 13px; color: #854F0B; line-height: 1.6; }
+    @media (max-width: 540px) {
+      .hero-about { padding: 32px 20px; }
+      .hero-about h1 { font-size: 24px; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- NAVBAR -->
+  <nav class="navbar">
+    <div class="nav-brand">
+      <span class="brand-icon">+</span>
+      <span class="brand-name">MediAssist AI</span>
+    </div>
+    <div class="nav-links">
+      <a href="index.html">Home</a>
+      <a href="symptom_checker.html">Symptom Checker</a>
+      <a href="report_upload.html">Upload Report</a>
+      <a href="about.html" class="active">About</a>
+    </div>
+  </nav>
+
+  <div class="page-container">
+
+    <!-- HERO -->
+    <div class="hero-about">
+      <span class="badge badge-info" style="margin-bottom:14px">Open Source Project</span>
+      <h1>About MediAssist AI</h1>
+      <p>
+        An AI-powered clinical decision support system that helps analyze patient symptoms
+        and lab reports to assist in preliminary medical assessment — built with
+        machine learning, OCR, and large language models.
+      </p>
+    </div>
+
+    <!-- WHAT IT DOES -->
+    <div class="card">
+      <p class="section-heading">What MediAssist AI Does</p>
+      <div class="info-grid">
+        <div class="info-card">
+          <div class="info-card-icon icon-blue" style="background:#E6F1FB;color:#185FA5">S</div>
+          <h3>Symptom Analysis</h3>
+          <p>Patient enters age, gender, and symptoms. A trained Random Forest / XGBoost model predicts the most likely disease with a severity score.</p>
+        </div>
+        <div class="info-card">
+          <div class="info-card-icon icon-teal" style="background:#E1F5EE;color:#0F6E56">R</div>
+          <h3>Report Analysis</h3>
+          <p>Upload a CBC blood test PDF or image. OCR extracts values, the ML model flags abnormalities, and Claude AI interprets the findings.</p>
+        </div>
+        <div class="info-card">
+          <div class="info-card-icon icon-green" style="background:#EAF3DE;color:#3B6D11">M</div>
+          <h3>Medicine Advice</h3>
+          <p>Based on predicted disease, MediAssist recommends medicines, dietary advice, precautions, and workout guidance from curated datasets.</p>
+        </div>
+        <div class="info-card">
+          <div class="info-card-icon icon-purple" style="background:#EEEDFE;color:#534AB7">A</div>
+          <h3>AI Reasoning</h3>
+          <p>Claude Sonnet provides deeper clinical reasoning — differential diagnoses, test recommendations, and red flag identification.</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- MEDICAL DISCLAIMER -->
+    <div class="warning-banner">
+      <h4>Important Medical Disclaimer</h4>
+      <p>
+        MediAssist AI is a <strong>decision support tool only</strong>. It is not a licensed medical device,
+        and its outputs are not medical diagnoses. The predictions and recommendations provided are
+        generated by machine learning models trained on publicly available datasets and may not be
+        accurate for all individuals. Always consult a qualified doctor, physician, or healthcare
+        professional before taking any medication or making any medical decision.
+      </p>
+    </div>
+
+    <div class="disclaimer-box">
+      <strong>For educational and research purposes.</strong> MediAssist AI does not store any patient data.
+      All analysis is performed locally on your device and server. No personal health information is retained.
+    </div>
+
+  </div>
+
+  <script src="js/utils.js"></script>
+
+</body>
+</html>
