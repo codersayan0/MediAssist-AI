@@ -133,7 +133,7 @@ Enter blood test values directly:
 
 ## 📂 Project Structure
 
-'''
+```
 MediAssist-AI/
 │
 ├── 🐳 docker-compose.yml
@@ -177,8 +177,7 @@ MediAssist-AI/
 ├── report_upload.js
 ├── results.js
 └── utils.js
-'''
----
+```
 
 ## 🚀 Quick Start
 
