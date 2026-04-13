@@ -4,7 +4,7 @@ import os
 import joblib
 
 # ── PATH — works for both local and Docker ────────────────
-BASE = os.path.dirname(__file__)  # ✅ correct for Docker
+BASE = os.path.dirname(__file__)  
 BASE_DOCKER = os.path.dirname(os.path.abspath(__file__))
 
 BASE = BASE_DOCKER if os.path.exists(os.path.join(BASE_DOCKER, "models")) else BASE_LOCAL
@@ -28,7 +28,7 @@ def predict_disease(symptoms: list) -> dict:
     # Build binary feature vector
     input_vector = np.zeros(len(symptom_columns))
 
-    # ✅ Build index once, never overwrite inside loop
+    #  Build index once, never overwrite inside loop
     column_index = {col: i for i, col in enumerate(symptom_columns)}
 
     for s in symptoms:
@@ -55,7 +55,7 @@ def predict_disease(symptoms: list) -> dict:
             for i in top3_idx
         ]
 
-    # ✅ Normalize spaces to underscores before severity lookup
+    # Normalize spaces to underscores before severity lookup
     severity_score = sum(
         severity_map.get(s.lower().strip().replace(" ", "_"), 0)
         for s in symptoms

@@ -57,7 +57,7 @@ def analyze_report():
         if os.path.exists(temp_path):
             os.remove(temp_path)
 
-    # ✅ Fixed key name — matches cbc_engine.py return value
+    # Fixed key name — matches cbc_engine.py return value
     condition       = cbc_result.get("predicted_condition", "Unknown")
     recommendations = get_recommendations(condition)
 
@@ -88,7 +88,7 @@ def analyze_cbc_manual():
         })
 
     except Exception as e:
-        print("❌ CBC MANUAL ERROR:", e)  # debug in terminal
+        print("❌ CBC MANUAL ERROR:", e) 
         return jsonify({"error": str(e)}), 500
 
 

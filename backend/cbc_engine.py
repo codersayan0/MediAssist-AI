@@ -4,7 +4,7 @@ import numpy as np
 import os
 import joblib
 
-BASE = os.path.dirname(__file__)  # ✅ correct for Docker
+BASE = os.path.dirname(__file__)  
 
 cbc_model = joblib.load(os.path.join(BASE, "models", "cbc_model.pkl"))
 

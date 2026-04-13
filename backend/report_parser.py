@@ -6,7 +6,7 @@ import re, io, os
 # Auto-detect environment
 # Windows local → use installed path
 # Docker        → tesseract is in system PATH automatically
-if os.name == "nt":  # Windows only
+if os.name == "nt": 
     tesseract_path = r"C:\Program Files\Tesseract-OCR\tesseract.exe"
     if os.path.exists(tesseract_path):
         pytesseract.pytesseract.tesseract_cmd = tesseract_path

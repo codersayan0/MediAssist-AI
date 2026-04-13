@@ -132,7 +132,7 @@ async function submitReport() {
   try {
     const result = await MediAssistAPI.analyzeReport(formData);
 
-    // ✅ Save with type "report" then redirect
+    // Save with type "report" then redirect
     sessionStorage.setItem("mediassist_result", JSON.stringify(result));
     sessionStorage.setItem("mediassist_type",   "report");
 
@@ -173,10 +173,10 @@ async function submitManualCBC() {
 
   try {
     const result = await MediAssistAPI.analyzeManual({
-      ...values  // ✅ flatten data
+      ...values  
        });
 
-    // ✅ Save with type "report" then redirect
+    // Save with type "report" then redirect
     sessionStorage.setItem("mediassist_result", JSON.stringify(result));
     sessionStorage.setItem("mediassist_type",   "report");
     window.location.href = "results.html";

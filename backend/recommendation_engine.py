@@ -4,7 +4,7 @@ import os
 import joblib
 import ast
 
-BASE = os.path.dirname(__file__)  # ✅ correct for Docker
+BASE = os.path.dirname(__file__)  
 
 # Load all recommendation CSVs
 meds_df   = pd.read_csv(os.path.join(BASE, "datasets", "medicine", "recommendations", "medications.csv"))
