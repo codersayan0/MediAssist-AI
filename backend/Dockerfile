@@ -16,18 +16,16 @@ WORKDIR /app
 
 COPY backend/requirements.txt .
 
-# Install requirements + gdown together
 RUN pip install --no-cache-dir -r requirements.txt && \
-    pip install --no-cache-dir gdown
+    pip install --no-cache-dir "gdown>=4.7.3"
 
 COPY backend/ .
 
-# Create folders first
 RUN mkdir -p ./datasets ./models
 
 # Download from Google Drive
-RUN gdown --folder "1fgksYlyxNfS9v72y07dmlpyjRQv8x3sE" -O ./datasets/ --remaining-ok
-RUN gdown --folder "17J8JkcxTsPaM0vDxxOBHqbdyKAqczz1j" -O ./models/   --remaining-ok
+RUN gdown --folder "1fgksYlyxNfS9v72y07dmlpyjRQv8x3sE" -O ./datasets/
+RUN gdown --folder "17J8JkcxTsPaM0vDxxOBHqbdyKAqczz1j" -O ./models/
 
 EXPOSE 5000
 CMD ["python", "app.py"]
