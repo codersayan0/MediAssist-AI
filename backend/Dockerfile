@@ -14,16 +14,15 @@ RUN apt-get update && apt-get install -y \
 
 WORKDIR /app
 
-# Copy requirements from backend folder
 COPY backend/requirements.txt .
 RUN pip install --no-cache-dir -r requirements.txt
+RUN pip install gdown
 
-# Copy backend code
 COPY backend/ .
 
-# Copy models and datasets from root into /app/
-COPY models/ ./models/
-COPY datasets/ ./datasets/
+# Download datasets and models from Google Drive
+RUN gdown --folder "1fgksYlyxNfS9v72y07dmlpyjRQv8x3sE" -O ./datasets/ --remaining-ok
+RUN gdown --folder "17J8JkcxTsPaM0vDxxOBHqbdyKAqczz1j" -O ./models/   --remaining-ok
 
 EXPOSE 5000
 CMD ["python", "app.py"]
