@@ -15,12 +15,17 @@ RUN apt-get update && apt-get install -y \
 WORKDIR /app
 
 COPY backend/requirements.txt .
-RUN pip install --no-cache-dir -r requirements.txt
-RUN pip install gdown
+
+# Install requirements + gdown together
+RUN pip install --no-cache-dir -r requirements.txt && \
+    pip install --no-cache-dir gdown
 
 COPY backend/ .
 
-# Download datasets and models from Google Drive
+# Create folders first
+RUN mkdir -p ./datasets ./models
+
+# Download from Google Drive
 RUN gdown --folder "1fgksYlyxNfS9v72y07dmlpyjRQv8x3sE" -O ./datasets/ --remaining-ok
 RUN gdown --folder "17J8JkcxTsPaM0vDxxOBHqbdyKAqczz1j" -O ./models/   --remaining-ok
 
