@@ -13,7 +13,8 @@ BASE_DIR = os.path.dirname(os.path.abspath(__file__))
 MODEL_DIR = os.path.join(BASE_DIR, "model")
 
 # ✅ Download files before anything else (safe, idempotent)
-ensure_all_files()
+if not os.path.exists(MODEL_DIR):
+    ensure_all_files()
 
 # ✅ Now safe to import utils (datasets also live in BASE_DIR/dataset)
 from utils import get_info
