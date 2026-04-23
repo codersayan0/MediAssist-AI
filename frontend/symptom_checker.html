@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Symptom Checker — MediAssist AI</title>
+
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/components.css">
+  <link rel="stylesheet" href="css/animations.css">
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
+<body>
+
+  <!-- NAVBAR -->
+  <nav class="navbar">
+    <div class="nav-brand">
+      <span class="brand-icon">+</span> MediAssist AI
+    </div>
+    <div class="nav-links">
+      <a href="index.html">Home</a>
+      <a href="symptom_checker.html" class="active">Symptom Checker</a>
+      <a href="report_upload.html">Report Analysis</a>
+      <a href="about.html">About</a>
+    </div>
+  </nav>
+
+  <!-- MAIN -->
+  <div class="page-container">
+
+    <h1 class="page-title">Symptom Checker</h1>
+
+    <p class="page-sub">
+      Enter your details and symptoms to get AI-powered health insights.
+    </p>
+
+    <!-- 🔥 AI BADGE -->
+    <div style="text-align:center;margin-bottom:20px;">
+      <span style="background:#eef4ff;color:#185FA5;padding:6px 12px;border-radius:20px;font-size:12px;">
+        AI Diagnosis Mode
+      </span>
+    </div>
+
+    <div class="card">
+
+      <!-- AGE + GENDER -->
+      <div class="form-row">
+        <div class="form-group">
+          <label>Age</label>
+          <input type="number" id="age" class="form-control" placeholder="e.g. 35" min="1" max="120">
+        </div>
+
+        <div class="form-group">
+          <label>Gender</label>
+          <select id="gender" class="form-control">
+            <option value="male">Male</option>
+            <option value="female">Female</option>
+            <option value="other">Other</option>
+          </select>
+        </div>
+      </div>
+
+      <!-- SYMPTOMS -->
+      <div class="form-group">
+        <label class="section-label">
+          Select Symptoms <span>(click multiple)</span>
+        </label>
+
+        <div class="symptom-tags" id="symptomTags"></div>
+      </div>
+
+      <!-- CUSTOM INPUT -->
+      <div class="form-group">
+        <label>Other Symptoms</label>
+        <input type="text" id="customSymptom" class="form-control"
+          placeholder="Type symptom and press Enter (e.g. fever)">
+      </div>
+
+      <!-- SELECTED LIST -->
+      <div id="selectedList"
+        style="margin-bottom:10px;font-size:13px;color:#185FA5;min-height:20px;">
+      </div>
+
+      <!-- EMPTY STATE -->
+      <div class="empty-text" id="emptyText" style="margin-bottom:15px;">
+        No symptoms selected yet
+      </div>
+
+      <!-- BUTTON -->
+      <button class="btn btn-primary" onclick="submitSymptoms()" style="width:100%">
+        Analyze Symptoms
+      </button>
+
+      <!-- DISCLAIMER -->
+      <p style="margin-top:12px;font-size:12px;color:#888;text-align:center;">
+        AI-based support. Always consult a doctor.
+      </p>
+
+    </div>
+
+    <!-- LOADING -->
+    <div class="loading-overlay" id="loading">
+      <div class="spinner"></div>
+      <p>MediAssist AI is analyzing your symptoms...</p>
+    </div>
+
+  </div>
+
+  <!-- JS (ORDER IMPORTANT) -->
+  <script src="js/utils.js"></script>
+  <script src="js/api.js"></script>
+  <script src="js/symptom_checker.js"></script>
+
+</body>
+</html>

@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Report Analysis — MediAssist AI</title>
+
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/components.css">
+  <link rel="stylesheet" href="css/animations.css">
+
+  <style>
+    .tab-bar {
+      display: flex;
+      gap: 6px;
+      background: #F1EFE8;
+      border-radius: 10px;
+      padding: 4px;
+      margin-bottom: 24px;
+    }
+
+    .tab-btn {
+      flex: 1;
+      padding: 10px;
+      border: none;
+      background: transparent;
+      border-radius: 7px;
+      font-size: 13px;
+      font-weight: 600;
+      color: #5F5E5A;
+      cursor: pointer;
+    }
+
+    .tab-btn.active {
+      background: #fff;
+      color: #185FA5;
+      box-shadow: 0 1px 4px rgba(0,0,0,0.08);
+    }
+
+    .tab-panel { display: none; }
+    .tab-panel.active { display: block; }
+
+    .cbc-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 14px;
+      margin-bottom: 20px;
+    }
+
+    .cbc-field label {
+      font-size: 13px;
+      font-weight: 500;
+      margin-bottom: 4px;
+      display: block;
+    }
+
+    .cbc-field small {
+      font-size: 11px;
+      color: #888;
+      display: block;
+      margin-top: 3px;
+    }
+
+    @media (max-width: 540px) {
+      .cbc-grid { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+
+<body>
+
+<!-- NAVBAR -->
+<nav class="navbar">
+  <div class="nav-brand">
+    <span class="brand-icon">+</span> MediAssist AI
+  </div>
+  <div class="nav-links">
+    <a href="index.html">Home</a>
+    <a href="symptom_checker.html">Symptom Checker</a>
+    <a href="report_upload.html" class="active">Report Analysis</a>
+    <a href="about.html">About</a>
+  </div>
+</nav>
+
+<!-- MAIN -->
+<div class="page-container">
+
+  <h1 class="page-title">Lab Report Analysis</h1>
+  <p class="page-sub">Enter your CBC values manually for AI-powered analysis.</p>
+
+  <!-- TAB BAR -->
+  <div class="tab-bar">
+    <button class="tab-btn active" onclick="switchTab('manual', this)">Manual Entry</button>
+    <button class="tab-btn" onclick="switchTab('upload', this)">Upload Report</button>
+  </div>
+
+  <!-- ================= MANUAL TAB ================= -->
+  <div class="tab-panel active" id="tab-manual">
+
+    <div class="card">
+
+      <div class="result-card-header" style="margin-bottom:20px">
+        <div class="result-card-title">
+          <span class="result-card-icon icon-green">C</span>
+          Complete CBC Input
+        </div>
+        <span class="badge badge-success">Recommended</span>
+      </div>
+
+      <div class="cbc-grid">
+
+        <div class="cbc-field">
+          <label>WBC</label>
+          <input type="number" id="wbc" class="form-control">
+          <small>4000 – 11000</small>
+        </div>
+
+        <div class="cbc-field">
+          <label>RBC</label>
+          <input type="number" id="rbc" class="form-control">
+          <small>4.2 – 5.9</small>
+        </div>
+
+        <div class="cbc-field">
+          <label>Hemoglobin</label>
+          <input type="number" id="hemoglobin" class="form-control">
+          <small>12 – 17 g/dL</small>
+        </div>
+
+        <div class="cbc-field">
+          <label>Hematocrit</label>
+          <input type="number" id="hematocrit" class="form-control">
+          <small>36 – 50 %</small>
+        </div>
+
+        <div class="cbc-field">
+          <label>Platelets</label>
+          <input type="number" id="platelets" class="form-control">
+          <small>150 – 400</small>
+        </div>
+
+        <div class="cbc-field">
+          <label>Neutrophils</label>
+          <input type="number" id="neutrophils" class="form-control">
+          <small>40 – 70 %</small>
+        </div>
+
+        <div class="cbc-field">
+          <label>Lymphocytes</label>
+          <input type="number" id="lymphocytes" class="form-control">
+          <small>20 – 40 %</small>
+        </div>
+
+        <div class="cbc-field">
+          <label>Glucose</label>
+          <input type="number" id="glucose" class="form-control">
+          <small>70 – 140 mg/dL</small>
+        </div>
+
+      </div>
+
+      <button class="btn btn-primary" onclick="submitManualCBC()" style="width:100%">
+        Analyze Report
+      </button>
+
+    </div>
+
+  </div>
+
+  <!-- ================= UPLOAD TAB ================= -->
+  <div class="tab-panel" id="tab-upload">
+
+    <div class="card" style="text-align:center;padding:50px 20px">
+
+      <h2>Upload Lab Report</h2>
+
+      <p style="font-size:16px;color:#888;">
+        🚧 Feature Coming Soon
+      </p>
+
+      <p style="font-size:13px;color:#aaa;">
+        OCR-based report scanning will be available in future updates.
+      </p>
+
+    </div>
+
+  </div>
+
+</div>
+
+<!-- JS -->
+<script src="js/api.js"></script>
+<script src="js/report_upload.js"></script>
+
+<script>
+function switchTab(tab, btn) {
+  document.querySelectorAll(".tab-panel").forEach(p => p.classList.remove("active"));
+  document.querySelectorAll(".tab-btn").forEach(b => b.classList.remove("active"));
+
+  document.getElementById("tab-" + tab).classList.add("active");
+  btn.classList.add("active");
+}
+</script>
+
+</body>
+</html>

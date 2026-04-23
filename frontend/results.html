@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Results — MediAssist AI</title>
+
+  <!-- CSS -->
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/components.css">
+  <link rel="stylesheet" href="css/animations.css">
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
+
+<body>
+
+<!-- NAVBAR -->
+<nav class="navbar">
+  <div class="nav-brand">
+    <span class="brand-icon">+</span> MediAssist AI
+  </div>
+
+  <div class="nav-links">
+    <a href="index.html">Home</a>
+    <a href="symptom_checker.html">New Check</a>
+    <a href="report_upload.html">Report Analysis</a>
+    <a href="about.html">About</a>
+  </div>
+</nav>
+
+<!-- MAIN -->
+<div class="page-container">
+
+  <h1 class="page-title">Your AI Diagnosis Results</h1>
+
+  <p class="page-sub">
+    Review the analysis below. This is decision support — always consult a doctor.
+  </p>
+
+  <!-- 🔙 BACK BUTTON -->
+  <div style="text-align:center;margin:20px 0;">
+    <a href="symptom_checker.html" class="btn btn-primary">
+      🔄 Check Again
+    </a>
+  </div>
+
+  <!-- RESULTS GRID -->
+  <div id="resultsContainer" class="results-grid">
+    <!-- Dynamic content will be injected here -->
+  </div>
+
+</div>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+<div style="text-align:center;margin-bottom:15px;">
+  <button onclick="downloadPDF()" class="btn btn-outline">
+    📄 Download Report
+  </button>
+</div>
+
+<div class="result-card">
+  <h3>🏥 Nearby Hospitals</h3>
+
+  <div class="map-container">
+    <iframe
+      src="https://www.google.com/maps?q=hospitals&output=embed"
+      allowfullscreen
+      loading="lazy">
+    </iframe>
+  </div>
+</div>
+
+<!-- JS -->
+<script src="js/utils.js"></script>
+<script src="js/api.js"></script>
+<script src="js/results.js"></script>
+
+</body>
+</html>

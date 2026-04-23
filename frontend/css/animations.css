@@ -1,0 +1,359 @@
+/* ═══════════════════════════════════════════
+   MediAssist AI — animations.css
+   All keyframes, transitions & motion effects
+═══════════════════════════════════════════ */
+
+/* ── PAGE ENTRY ANIMATIONS ──────────────────────────────── */
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to   { opacity: 1; }
+}
+
+@keyframes fadeInUp {
+  from { opacity: 0; transform: translateY(20px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes fadeInDown {
+  from { opacity: 0; transform: translateY(-20px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes fadeInLeft {
+  from { opacity: 0; transform: translateX(-20px); }
+  to   { opacity: 1; transform: translateX(0); }
+}
+
+@keyframes fadeInRight {
+  from { opacity: 0; transform: translateX(20px); }
+  to   { opacity: 1; transform: translateX(0); }
+}
+
+@keyframes scaleIn {
+  from { opacity: 0; transform: scale(0.92); }
+  to   { opacity: 1; transform: scale(1); }
+}
+
+/* ── UTILITY ANIMATION CLASSES ──────────────────────────── */
+
+.anim-fade-in {
+  animation: fadeIn 0.4s ease forwards;
+}
+
+.anim-fade-up {
+  animation: fadeInUp 0.45s ease forwards;
+}
+
+.anim-fade-down {
+  animation: fadeInDown 0.45s ease forwards;
+}
+
+.anim-scale-in {
+  animation: scaleIn 0.35s ease forwards;
+}
+
+/* Staggered children — add to parent, children animate one by one */
+.stagger-children > * {
+  opacity: 0;
+  animation: fadeInUp 0.4s ease forwards;
+}
+.stagger-children > *:nth-child(1) { animation-delay: 0.05s; }
+.stagger-children > *:nth-child(2) { animation-delay: 0.12s; }
+.stagger-children > *:nth-child(3) { animation-delay: 0.19s; }
+.stagger-children > *:nth-child(4) { animation-delay: 0.26s; }
+.stagger-children > *:nth-child(5) { animation-delay: 0.33s; }
+.stagger-children > *:nth-child(6) { animation-delay: 0.40s; }
+
+/* ── PAGE LOAD — auto animate main content ──────────────── */
+
+.page-container {
+  animation: fadeInUp 0.5s ease forwards;
+}
+
+.navbar {
+  animation: fadeInDown 0.4s ease forwards;
+}
+
+.card {
+  animation: fadeInUp 0.4s ease forwards;
+}
+
+/* ── LOADING SPINNER ────────────────────────────────────── */
+
+@keyframes spin {
+  to { transform: rotate(360deg); }
+}
+
+.spinner {
+  width: 40px;
+  height: 40px;
+  border: 3px solid rgba(0,0,0,0.08);
+  border-top-color: #185FA5;
+  border-radius: 50%;
+  animation: spin 0.75s linear infinite;
+}
+
+/* ── PULSE — for live/processing indicators ─────────────── */
+
+@keyframes pulse {
+  0%, 100% { opacity: 1;   transform: scale(1); }
+  50%       { opacity: 0.5; transform: scale(0.95); }
+}
+
+@keyframes pulseDot {
+  0%, 100% { transform: scale(1);    opacity: 1; }
+  50%       { transform: scale(1.4); opacity: 0.6; }
+}
+
+.pulse {
+  animation: pulse 2s ease-in-out infinite;
+}
+
+/* Live status dot (e.g. "AI is thinking…") */
+.status-dot {
+  display: inline-block;
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: #0F6E56;
+  animation: pulseDot 1.2s ease-in-out infinite;
+  margin-right: 6px;
+  vertical-align: middle;
+}
+.status-dot.blue   { background: #185FA5; }
+.status-dot.red    { background: #A32D2D; }
+.status-dot.amber  { background: #BA7517; }
+
+/* ── SKELETON SHIMMER ───────────────────────────────────── */
+
+@keyframes shimmer {
+  0%   { background-position: 200% 0; }
+  100% { background-position: -200% 0; }
+}
+
+.skeleton {
+  background: linear-gradient(
+    90deg,
+    #f0ede8 25%,
+    #e4e1dc 50%,
+    #f0ede8 75%
+  );
+  background-size: 200% 100%;
+  animation: shimmer 1.5s infinite;
+  border-radius: 6px;
+  color: transparent;
+  user-select: none;
+}
+
+.skeleton-text {
+  height: 14px;
+  border-radius: 4px;
+  margin-bottom: 8px;
+}
+.skeleton-text.w-full  { width: 100%; }
+.skeleton-text.w-3-4   { width: 75%; }
+.skeleton-text.w-1-2   { width: 50%; }
+.skeleton-text.w-1-4   { width: 25%; }
+
+.skeleton-card {
+  height: 100px;
+  border-radius: 14px;
+  width: 100%;
+}
+
+/* ── CONFIDENCE BAR FILL ────────────────────────────────── */
+
+@keyframes growWidth {
+  from { width: 0; }
+  to   { width: var(--target-width, 100%); }
+}
+
+.confidence-bar-fill {
+  animation: growWidth 1s ease forwards;
+  animation-delay: 0.3s;
+  width: 0; /* start at 0 before animation */
+}
+
+/* ── RESULT CARDS — stagger on load ─────────────────────── */
+
+.result-card {
+  opacity: 0;
+  animation: fadeInUp 0.45s ease forwards;
+}
+
+.result-card:nth-child(1) { animation-delay: 0.05s; }
+.result-card:nth-child(2) { animation-delay: 0.12s; }
+.result-card:nth-child(3) { animation-delay: 0.19s; }
+.result-card:nth-child(4) { animation-delay: 0.26s; }
+.result-card:nth-child(5) { animation-delay: 0.33s; }
+.result-card:nth-child(6) { animation-delay: 0.40s; }
+
+/* ── BUTTON MICRO-INTERACTIONS ──────────────────────────── */
+
+.btn {
+  transition: transform 0.15s ease, box-shadow 0.15s ease, background 0.2s ease;
+}
+.btn:hover:not(:disabled) {
+  transform: translateY(-1px);
+}
+.btn:active:not(:disabled) {
+  transform: translateY(0) scale(0.98);
+}
+.btn:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+/* ── SYMPTOM TAG MICRO-INTERACTIONS ─────────────────────── */
+
+.symptom-tag {
+  transition: all 0.15s ease;
+}
+.symptom-tag:hover {
+  transform: translateY(-1px);
+}
+.symptom-tag.selected {
+  animation: scaleIn 0.2s ease forwards;
+}
+
+/* ── UPLOAD ZONE INTERACTIONS ───────────────────────────── */
+
+.upload-zone {
+  transition: border-color 0.2s ease, background 0.2s ease, transform 0.15s ease;
+}
+.upload-zone:hover {
+  transform: translateY(-1px);
+}
+.upload-zone.dragover {
+  transform: scale(1.01);
+}
+.upload-zone.has-file {
+  animation: scaleIn 0.25s ease forwards;
+}
+
+/* ── CARD HOVER LIFT ────────────────────────────────────── */
+
+.feature-card {
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+.feature-card:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.08);
+}
+
+.info-card {
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+.info-card:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.08);
+}
+
+/* ── NAVBAR LINK UNDERLINE SLIDE ────────────────────────── */
+
+.nav-links a {
+  position: relative;
+  transition: color 0.2s;
+}
+.nav-links a::after {
+  content: "";
+  position: absolute;
+  bottom: -3px;
+  left: 0;
+  width: 0;
+  height: 1.5px;
+  background: #185FA5;
+  transition: width 0.25s ease;
+  border-radius: 2px;
+}
+.nav-links a:hover::after {
+  width: 100%;
+}
+
+/* ── STEP CIRCLE TRANSITION ─────────────────────────────── */
+
+.step-circle {
+  transition: background 0.3s ease, border-color 0.3s ease, color 0.3s ease;
+}
+
+/* ── FORM FOCUS ANIMATIONS ──────────────────────────────── */
+
+.form-control {
+  transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+.form-control:focus {
+  animation: none; /* handled by CSS in style.css */
+}
+
+/* ── BADGE POP-IN ────────────────────────────────────────── */
+
+@keyframes badgePop {
+  0%   { transform: scale(0.7); opacity: 0; }
+  70%  { transform: scale(1.1); }
+  100% { transform: scale(1);   opacity: 1; }
+}
+
+.badge {
+  animation: badgePop 0.3s ease forwards;
+}
+
+/* ── TOAST SLIDE-UP ─────────────────────────────────────── */
+
+@keyframes slideUp {
+  from { opacity: 0; transform: translateY(12px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes slideDown {
+  from { opacity: 1; transform: translateY(0); }
+  to   { opacity: 0; transform: translateY(12px); }
+}
+
+/* ── HERO SECTION ENTRANCE ───────────────────────────────── */
+
+.hero-content {
+  animation: fadeInUp 0.6s ease forwards;
+}
+.hero-content h1 {
+  animation: fadeInUp 0.6s ease 0.1s both;
+}
+.hero-content .hero-sub {
+  animation: fadeInUp 0.6s ease 0.2s both;
+}
+.hero-actions {
+  animation: fadeInUp 0.6s ease 0.3s both;
+}
+.feature-cards {
+  animation: fadeInUp 0.6s ease 0.4s both;
+}
+
+/* ── HERO ABOUT PAGE ─────────────────────────────────────── */
+
+.hero-about {
+  animation: scaleIn 0.5s ease forwards;
+}
+
+/* ── PREDICTION CARD HIGHLIGHT ───────────────────────────── */
+
+@keyframes highlightPulse {
+  0%   { box-shadow: 0 0 0 0 rgba(24, 95, 165, 0.25); }
+  70%  { box-shadow: 0 0 0 10px rgba(24, 95, 165, 0); }
+  100% { box-shadow: 0 0 0 0 rgba(24, 95, 165, 0); }
+}
+
+.prediction-main {
+  animation: fadeIn 0.5s ease forwards, highlightPulse 1.2s ease 0.6s;
+}
+
+/* ── REDUCED MOTION — accessibility ─────────────────────── */
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}

@@ -1,0 +1,28 @@
+services:
+  mediassist:
+    build: .
+    container_name: mediassist_ai
+
+    ports:
+      - "5000:5000"
+
+    environment:
+      - PYTHONUNBUFFERED=1
+
+    # ✅ Persist downloaded model + dataset files across container restarts
+    volumes:
+      - mediassist_model:/app/model
+      - mediassist_dataset:/app/dataset
+
+    restart: always
+
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:5000/api/symptoms"]
+      interval: 60s
+      timeout: 30s
+      retries: 5
+      start_period: 120s   # Give time for Google Drive downloads on first boot
+
+volumes:
+  mediassist_model:
+  mediassist_dataset:
